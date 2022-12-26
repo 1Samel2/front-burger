@@ -2,8 +2,8 @@ import * as C from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import LoginImg from "../../assets/login-code-burger.svg";
-import Logo from "../../assets/logo-burger.svg";
+import LoginImg from "../../assets/logo-burger.svg";
+import Logo from "../../assets/logo-login.svg";
 import Button from "../../components/Button";
 import api from "../../services/api";
 

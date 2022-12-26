@@ -1,16 +1,21 @@
-import Root, { loader as rootLoader } from "./routes/root";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./page/Login"; 
+import Register from './page/Register'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    loader: rootLoader,
-    children: [
-      {
-        path: "contacts/:contactId",
-        element: <Contact />,
-      },
-    ],
-  },
-]);
+
+function conexãoEntrePages() {
+
+    return (
+
+        <Router>
+            <Routes>
+                <Route>
+                    <Route path="/" element={<Login />} />
+                    <Route path="register" element={< Register />} />
+                </Route>
+            </Routes>
+        </Router>
+    );
+}
+
+export default conexãoEntrePages;
