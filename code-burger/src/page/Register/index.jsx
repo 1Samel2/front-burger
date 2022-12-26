@@ -6,6 +6,7 @@ import RegisterImg from "../../assets/register-img.svg";
 import Logo from "../../assets/logo-burger.svg";
 import Button from "../../components/Button";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const schema = Yup.object().shape({
@@ -18,7 +19,7 @@ export default function Register() {
       .min(6, "A senha deve ter pelomenos 6 digítos"),
     confirmPassword: Yup.string()
       .required("A senha é obrigatória")
-      .oneOf([Yup.ref('password')], 'As senhas devem ser iguais')
+      .oneOf([Yup.ref("password")], "As senhas devem ser iguais"),
   });
 
   const {
@@ -30,13 +31,28 @@ export default function Register() {
   });
 
   const onSubmit = async (clientData) => {
-    const response = await api.post("users", {
-      name:clientData.name,
-      email: clientData.email,
-      password: clientData.password,
-    });
-    console.log(response);
+    try {
+      const { status } = await api.post(
+        "users",
+        {
+          name: clientData.name,
+          email: clientData.email,
+          password: clientData.password,
+        },
+        { validateStatus: () => true }
+      );
+      if (status === 201) {
+        toast.success("Cadastro criado com sucesso");
+      } else if (status === 409) {
+        toast.error("E-mail já cadastrado! Faça login para continuar");
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      toast.error("Falha no sistema!");
+    }
   };
+
   return (
     <>
       <C.Container>
