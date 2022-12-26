@@ -12,14 +12,14 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const LoginImage = styled.img`
-  height: 70%;
+export const RegisterImage = styled.img`
+  height: 82%;
 `;
 
 export const ContainerItens = styled.div`
   background: #373737;
   border-radius: 0 10px 10px 0;
-  height: 70%;
+  height: 82%;
   padding: 25px 75px;
   display: flex;
   flex-direction: column;

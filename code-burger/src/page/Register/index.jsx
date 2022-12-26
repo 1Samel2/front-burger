@@ -2,19 +2,23 @@ import * as C from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import LoginImg from "../../assets/login-code-burger.svg";
+import RegisterImg from "../../assets/register-img.svg";
 import Logo from "../../assets/logo-burger.svg";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
-export default function Login() {
+export default function Register() {
   const schema = Yup.object().shape({
+    name: Yup.string().required("O seu nome é obrigatório"),
     email: Yup.string()
       .email("Digite um e-mail válido")
       .required("O e-mail é obrigátorio"),
     password: Yup.string()
       .required("A senha é obrigatório")
       .min(6, "A senha deve ter pelomenos 6 digítos"),
+    confirmPassword: Yup.string()
+      .required("A senha é obrigatória")
+      .oneOf([Yup.ref('password')], 'As senhas devem ser iguais')
   });
 
   const {
@@ -26,7 +30,8 @@ export default function Login() {
   });
 
   const onSubmit = async (clientData) => {
-    const response = await api.post("sessions", {
+    const response = await api.post("users", {
+      name:clientData.name,
       email: clientData.email,
       password: clientData.password,
     });
@@ -35,11 +40,18 @@ export default function Login() {
   return (
     <>
       <C.Container>
-        <C.LoginImage src={Logo} alt="login-image" />
+        <C.RegisterImage src={RegisterImg} alt="register-image" />
         <C.ContainerItens>
-          <img src={LoginImg} alt="logo" />
-          <C.H1>Login</C.H1>
+          <img src={Logo} alt="logo" />
+          <C.H1>Cadastre-se</C.H1>
           <form noValidate onSubmit={handleSubmit(onSubmit)}>
+            <C.Label>Nome</C.Label>
+            <C.input
+              type="text"
+              {...register("name")}
+              error={errors.name?.message}
+            />
+            <C.Error>{errors.name?.message}</C.Error>
             <C.Label>Email</C.Label>
             <C.input
               type="email"
@@ -54,10 +66,19 @@ export default function Login() {
               error={errors.password?.message}
             />
             <C.Error>{errors.password?.message}</C.Error>
-            <Button type="submit" style={{marginTop:30, marginBottom: 30}}>Sign In</Button>
+            <C.Label>Confirmar Senha</C.Label>
+            <C.input
+              type="password"
+              {...register("confirmPassword")}
+              error={errors.confirmPassword?.message}
+            />
+            <C.Error>{errors.confirmPassword?.message}</C.Error>
+            <Button type="submit" style={{ marginTop: 30, marginBottom: 30 }}>
+              Sign In
+            </Button>
           </form>
           <C.SignInLink>
-            Não possui conta ? <a>Sign Up</a>
+            Já possui conta ? <a>Sign Up</a>
           </C.SignInLink>
         </C.ContainerItens>
       </C.Container>
