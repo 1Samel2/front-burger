@@ -23,6 +23,11 @@ export const ContainerItens = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -51,6 +56,16 @@ export const input = styled.input`
   width: 391.42px;
   height: 38.32px;
   padding-left: 4px;
+  border: ${(props) => (props.error ? "2px solid #cc1717" : "none")};
+`;
+
+export const Error = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  padding-top: 10px;
+  color: #cc1717;
 `;
 
 export const Button = styled.button`
@@ -66,6 +81,10 @@ export const Button = styled.button`
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
   }
 `;
 
