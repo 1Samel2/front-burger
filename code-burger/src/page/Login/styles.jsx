@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import BackgroundImg from "../../assets/backgroud-login.svg";
+import BackgroundImg from "../../assets/x-bacon-logo.jpg";
 
 export const Container = styled.div`
   height: 100vh;
@@ -12,13 +12,9 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const LoginImage = styled.img`
-  height: 70%;
-`;
-
 export const ContainerItens = styled.div`
-  background: #373737;
-  border-radius: 0 10px 10px 0;
+  background: #10121d;
+  border-radius: 10px;
   height: 70%;
   padding: 25px 75px;
   display: flex;
@@ -28,6 +24,11 @@ export const ContainerItens = styled.div`
   form {
     display: flex;
     flex-direction: column;
+  }
+
+  @media (max-width: 800px) {
+    padding: 30px;
+    height: auto;
   }
 `;
 
@@ -57,7 +58,12 @@ export const input = styled.input`
   width: 391.42px;
   height: 38.32px;
   padding-left: 4px;
-  border: ${(props) => (props.error ? "2px solid #cc1717" : "none")};
+  border: ${(props) => (props.error ? "3px solid #B06D46" : "none")};
+
+  @media (max-width: 800px) {
+    width: 300px;
+    height: 38.32px;
+  }
 `;
 
 export const Error = styled.p`
@@ -66,9 +72,8 @@ export const Error = styled.p`
   font-size: 14px;
   line-height: 16px;
   padding-top: 10px;
-  color: #cc1717;
+  color: #b06d46;
 `;
-
 
 export const SignInLink = styled.p`
   font-style: normal;

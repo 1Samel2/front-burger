@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import LoginImg from "../../assets/logo-burger.svg";
-import Logo from "../../assets/logo-login.svg";
 import Button from "../../components/Button";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 export default function Login() {
@@ -26,19 +26,24 @@ export default function Login() {
   });
 
   const onSubmit = async (clientData) => {
-    const response = await api.post("sessions", {
-      email: clientData.email,
-      password: clientData.password,
-    });
-    console.log(response);
+    const response = await toast.promise(
+      api.post("sessions", {
+        email: clientData.email,
+        password: clientData.password,
+      }),
+      {
+        pending: "Verificando seus dados",
+        success: "Seja bem-vindo(a)",
+        error: "Verifique seu e-mail e senha",
+      }
+    );
   };
   return (
     <>
       <C.Container>
-        <C.LoginImage src={Logo} alt="login-image" />
         <C.ContainerItens>
           <img src={LoginImg} alt="logo" />
-          <C.H1>Login</C.H1>
+          <C.H1>Entrar</C.H1>
           <form noValidate onSubmit={handleSubmit(onSubmit)}>
             <C.Label>Email</C.Label>
             <C.input
@@ -54,7 +59,9 @@ export default function Login() {
               error={errors.password?.message}
             />
             <C.Error>{errors.password?.message}</C.Error>
-            <Button type="submit" style={{marginTop:30, marginBottom: 30}}>Sign In</Button>
+            <Button type="submit" style={{ marginTop: 30, marginBottom: 30 }}>
+              Sign In
+            </Button>
           </form>
           <C.SignInLink>
             Não possui conta ? <a>Sign Up</a>

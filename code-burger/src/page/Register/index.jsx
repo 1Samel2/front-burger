@@ -2,7 +2,6 @@ import * as C from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import RegisterImg from "../../assets/register-img.svg";
 import Logo from "../../assets/logo-burger.svg";
 import Button from "../../components/Button";
 import api from "../../services/api";
@@ -56,7 +55,6 @@ export default function Register() {
   return (
     <>
       <C.Container>
-        <C.RegisterImage src={RegisterImg} alt="register-image" />
         <C.ContainerItens>
           <img src={Logo} alt="logo" />
           <C.H1>Cadastre-se</C.H1>
