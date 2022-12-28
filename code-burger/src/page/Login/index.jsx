@@ -1,13 +1,16 @@
 import * as C from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {Link} from 'react-router-dom'
 import * as Yup from "yup";
 import LoginImg from "../../assets/logo-burger.svg";
 import Button from "../../components/Button";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import { useUser } from "../../hooks/UserContext";
 
 export default function Login() {
+  const { putUserData, userData } = useUser();
   const schema = Yup.object().shape({
     email: Yup.string()
       .email("Digite um e-mail válido")
@@ -26,7 +29,7 @@ export default function Login() {
   });
 
   const onSubmit = async (clientData) => {
-    const response = await toast.promise(
+    const { data } = await toast.promise(
       api.post("sessions", {
         email: clientData.email,
         password: clientData.password,
@@ -37,6 +40,8 @@ export default function Login() {
         error: "Verifique seu e-mail e senha",
       }
     );
+
+    putUserData(data);
   };
   return (
     <>
@@ -64,7 +69,7 @@ export default function Login() {
             </Button>
           </form>
           <C.SignInLink>
-            Não possui conta ? <a>Sign Up</a>
+            Não possui conta ? <Link to="/register">Cadastre-se</Link>
           </C.SignInLink>
         </C.ContainerItens>
       </C.Container>

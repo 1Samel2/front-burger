@@ -29,6 +29,9 @@ export const ContainerItens = styled.div`
   @media (max-width: 800px) {
     padding: 30px;
     height: auto;
+    img {
+      height: 50px;
+    }
   }
 `;
 

@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const ContainerItens = styled.div`
   background: #10121d;
   border-radius: 10px;
-  height: 80%;
+  height: 84%;
   padding: 25px 75px;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,10 @@ export const H1 = styled.h1`
   color: #ffffff;
   text-align: center;
   margin-top: 30px;
+
+  @media (max-width:800px){
+    margin-top: 10px;
+  }
 `;
 
 export const Label = styled.p`
@@ -54,6 +58,10 @@ export const Label = styled.p`
   line-height: 14px;
   color: #ffffff;
   margin-top: 30px;
+
+  @media (max-width:800px){
+    margin-top: 10px;
+  }
 `;
 
 export const input = styled.input`

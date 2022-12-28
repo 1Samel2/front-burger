@@ -2,6 +2,7 @@ import * as C from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-burger.svg";
 import Button from "../../components/Button";
 import api from "../../services/api";
@@ -92,7 +93,7 @@ export default function Register() {
             </Button>
           </form>
           <C.SignInLink>
-            Já possui conta ? <a>Sign Up</a>
+            Já possui conta ? <Link to="/login">Entrar</Link>
           </C.SignInLink>
         </C.ContainerItens>
       </C.Container>
