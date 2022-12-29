@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  margin: 50px;  
   margin-bottom: 200px;
+
   .swiper-slide img {
     width: 300px;
     height: 300px;
@@ -21,6 +21,10 @@ export const Container = styled.section`
   @media (max-width: 800px) {
     width: 100%;
     height: 100%;
+  }
+
+  .swiper-wrapper {
+    padding: 40px;
   }
 `;
 
@@ -42,7 +46,20 @@ export const H1 = styled.h1`
 export const BoxOfCategory = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 70px;
+  padding-bottom: 40px;
+
+  p {
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 120%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
   button {
     margin-top: 20px;
     width: 300px;
