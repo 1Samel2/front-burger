@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Routes from "./routes/routes";
 import { UserProvider } from "./hooks/UserContext";
 import GlobalStyles from "./globalStyles";
+import "swiper/css/bundle";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

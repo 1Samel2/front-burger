@@ -7,5 +7,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
     outline: none;
     font-family: 'Roboto', sans-serif;
+    
+}
+
+html{
+    background: #10121d;
 }
 `;

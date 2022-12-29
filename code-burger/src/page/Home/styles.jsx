@@ -4,4 +4,6 @@ export const Container = styled.div`
     
 
 `
-export const HomeLogo = styled.img``;
+export const HomeLogo = styled.img`
+width: 100%;
+`;

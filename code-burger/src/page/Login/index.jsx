@@ -1,7 +1,7 @@
 import * as C from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {Link} from 'react-router-dom'
+import { Link, useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import LoginImg from "../../assets/logo-burger.svg";
 import Button from "../../components/Button";
@@ -10,6 +10,7 @@ import api from "../../services/api";
 import { useUser } from "../../hooks/UserContext";
 
 export default function Login() {
+  const history = useHistory();
   const { putUserData, userData } = useUser();
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -42,6 +43,10 @@ export default function Login() {
     );
 
     putUserData(data);
+
+    setTimeout(() => {
+      history.push("/");
+    }, 1000);
   };
   return (
     <>
