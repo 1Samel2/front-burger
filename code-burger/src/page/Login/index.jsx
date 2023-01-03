@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import LoginImg from "../../assets/logo-burger.svg";
-import Button from "../../components/Button";
+import { Button } from "../../components/Button";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { useUser } from "../../hooks/UserContext";

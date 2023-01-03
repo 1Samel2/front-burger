@@ -3,7 +3,7 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 import Home from "../page/Home";
 import PrivateRoute from "./private-route";
-import { Products } from "../page/Products";
+import { Products } from "../page";
 
 function conexãoEntrePages() {
   return (
@@ -13,7 +13,7 @@ function conexãoEntrePages() {
           <Route component={Login} path="/login" />
           <Route component={Register} path="/register" />
           <PrivateRoute exact component={Home} path="/" />
-          <PrivateRoute  component={Products} path="/products" />
+          <PrivateRoute component={Products} path="/products" />
         </Route>
       </Switch>
     </Router>

@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import formatCurrency from "../../utils/formatCurrency";
 
-export default function CategoryCarousel() {
+export function CategoryCarousel() {
   const [categories, setCategories] = useState([]);
   const [offers, setOffers] = useState([]);
 

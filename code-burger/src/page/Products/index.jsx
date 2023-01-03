@@ -7,10 +7,9 @@ import Capa from "../../assets/capa-burger-home.svg";
 
 export const Products = () => {
   const [categories, setCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(0);
   const [products, setProducts] = useState([]);
-
-  console.log(categories);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(0);
 
   useEffect(() => {
     async function loadCategories() {
@@ -32,6 +31,17 @@ export const Products = () => {
     loadCategories();
   }, []);
 
+  useEffect(() => {
+    if (activeCategory === 0) {
+      setFilteredProducts(products);
+    } else {
+      const newFilteredProducts = products.filter(
+        (product) => product.category_id === activeCategory
+      );
+      setFilteredProducts(newFilteredProducts);
+    }
+  }, [activeCategory, products]);
+
   return (
     <C.Container>
       <C.ProductsImg src={Capa} alt="logo categorias" />
@@ -52,9 +62,9 @@ export const Products = () => {
       </C.CategoriesMenu>
 
       <C.ProductsContainer>
-        {products &&
-          products.map((product) => (
-            <CardProduct key={product} product={product} />
+        {filteredProducts &&
+          filteredProducts.map((product) => (
+            <CardProduct key={product.id} product={product} />
           ))}
       </C.ProductsContainer>
     </C.Container>
