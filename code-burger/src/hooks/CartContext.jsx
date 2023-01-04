@@ -24,6 +24,18 @@ export const CartProvider = ({ children }) => {
       JSON.stringify(newCartProducts)
     );
   };
+
+  const increaseProducts = async (productId) => {
+    const newCart = cartProducts.map((product) => {
+      return product.id === productId
+        ? { ...product, quantity: product.quantity + 1 }
+        : product;
+    });
+    setCartProducts(newCart);
+
+    await localStorage.setItem("codeburger:cartInfo", JSON.stringify(newCart));
+  };
+
   useEffect(() => {
     const loadUserData = async () => {
       const clientCartData = await localStorage.getItem("codeburger:cartInfo");
@@ -35,7 +47,7 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   return (
-    <CartContext.Provider value={{ putProductInCart, cartProducts }}>
+    <CartContext.Provider value={{ putProductInCart, cartProducts, increaseProducts }}>
       {children}
     </CartContext.Provider>
   );

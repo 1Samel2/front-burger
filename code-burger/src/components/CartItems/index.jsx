@@ -4,7 +4,7 @@ import { useCart } from "../../hooks/CartContext";
 import * as C from "./styles";
 
 export function CartItems() {
-  const { cartProducts } = useCart();
+  const { cartProducts, increaseProducts } = useCart();
   return (
     <C.Container>
       <C.Header>
@@ -20,7 +20,16 @@ export function CartItems() {
             <img src={product.url} alt={product.name}></img>
             <p>{product.name}</p>
             <p>{formatCurrency(product.price)}</p>
-            <p>{product.quantity}</p>
+            <C.QuantityContainer>
+              <button style={{ fontSize: 30 }}>-</button>
+              <p>{product.quantity}</p>
+              <button
+                onClick={() => increaseProducts(product.id)}
+                style={{ fontSize: 24 }}
+              >
+                +
+              </button>
+            </C.QuantityContainer>
             <p>{formatCurrency(product.quantity * product.price)}</p>
           </C.Body>
         ))

@@ -28,11 +28,12 @@ export const Body = styled.div`
   width: max-content;
   grid-gap: 10px 15px;
   padding: 10px;
-
-img{
+  align-items: center;
+  border-bottom: 1px solid #9a9a9d;
+  img {
     border-radius: 10px;
     width: 120px;
-}
+  }
 
   p {
     font-style: normal;
@@ -43,6 +44,17 @@ img{
   }
 `;
 
-export const EmptyCart = styled.p`
-    
-`
+export const QuantityContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  button {
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+`;
+
+export const EmptyCart = styled.p``;
