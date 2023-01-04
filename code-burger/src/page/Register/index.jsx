@@ -4,11 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-burger.svg";
-import { Button } from "../../components/Button";
+import { Button } from "../../components";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 
-export default function Register() {
+export function Register() {
   const schema = Yup.object().shape({
     name: Yup.string().required("O seu nome é obrigatório"),
     email: Yup.string()

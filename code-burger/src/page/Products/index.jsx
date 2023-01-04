@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as C from "./styles";
 import api from "../../services/api";
-import { CardProduct } from "../../components/CardProduct";
+import { CardProduct } from "../../components";
 import formatCurrency from "../../utils/formatCurrency";
 import Capa from "../../assets/capa-burger-home.svg";
 

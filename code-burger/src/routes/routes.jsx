@@ -1,9 +1,6 @@
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import Login from "../page/Login";
-import Register from "../page/Register";
-import Home from "../page/Home";
+import { Login, Register, Home, Products, Cart } from "../page";
 import PrivateRoute from "./private-route";
-import { Products } from "../page";
 
 function conexãoEntrePages() {
   return (
@@ -14,6 +11,7 @@ function conexãoEntrePages() {
           <Route component={Register} path="/register" />
           <PrivateRoute exact component={Home} path="/" />
           <PrivateRoute component={Products} path="/products" />
+          <PrivateRoute component={Cart} path="/cart" />
         </Route>
       </Switch>
     </Router>

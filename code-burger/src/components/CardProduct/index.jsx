@@ -1,5 +1,5 @@
 import * as C from "./styles";
-import { Button } from "../../components/Button";
+import { Button } from "../Button";
 import { useCart } from "../../hooks/CartContext";
 
 export const CardProduct = ({ product }) => {

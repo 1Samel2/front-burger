@@ -1,8 +1,8 @@
 import * as C from "./styles";
-import { CategoryCarousel } from "../../components/CategoryAndOffersCarousel";
+import { CategoryCarousel } from "../../components";
 import Capa from "../../assets/capa-burger-home.svg";
 
-export default function Home() {
+export function Home() {
   return (
     <C.Container>
       <C.HomeLogo src={Capa} alt="logo da categoria" />
