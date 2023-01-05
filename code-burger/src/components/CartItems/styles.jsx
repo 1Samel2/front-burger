@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { FaTrash } from "react-icons/fa";
+
 export const Container = styled.section`
   background-color: #ffffff;
   border-radius: 20px;
@@ -30,6 +32,7 @@ export const Body = styled.div`
   padding: 10px;
   align-items: center;
   border-bottom: 1px solid #9a9a9d;
+  position: relative;
   img {
     border-radius: 10px;
     width: 120px;
@@ -58,3 +61,18 @@ export const QuantityContainer = styled.div`
 `;
 
 export const EmptyCart = styled.p``;
+
+export const ButtonImageTrash = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding-right: 20px;
+
+  &:active {
+    opacity: 0.6;
+  }
+`;
+
+export const Trash = styled(FaTrash)``;
