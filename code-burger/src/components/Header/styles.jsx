@@ -27,10 +27,10 @@ export const ContainerRight = styled.div`
 export const PageLink = styled.a`
   cursor: pointer;
   text-decoration: none;
-  /* color: ${(props) => (props.isActive ? "black" : "wheat")}; */
+  color: ${(props) => (props.isActive ? "black" : "#B06D46")};
   font-size: 16px;
   line-height: 19px;
-  /* font-weight: ${(props) => (props.isActive ? "bold" : "normal")}; */
+  font-weight: ${(props) => (props.isActive ? "bold" : "normal")};
 `;
 export const PageLinkExit = styled.a`
   font-style: normal;

@@ -1,21 +1,28 @@
 import * as C from "./styles";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 export function Header() {
- 
-  const history = useHistory();
-
-
+  const {
+    push,
+    location: { pathname },
+  } = useHistory();
   
   return (
     <C.Container>
       <C.ContainerLeft>
-        <C.PageLink onClick={() => push("/")}>Home</C.PageLink>
-        <C.PageLink onClick={() => push("/products")}>Ver Produtos</C.PageLink>
+        <C.PageLink onClick={() => push("/")} isActive={pathname === "/"}>
+          Home
+        </C.PageLink>
+        <C.PageLink
+          onClick={() => push("/products")}
+          isActive={pathname.includes("/products")}
+        >
+          Ver Produtos
+        </C.PageLink>
       </C.ContainerLeft>
 
       <C.ContainerRight>
         <C.PageLink>
-          <C.Cart />
+          <C.Cart onClick={() => push("/cart")} />
         </C.PageLink>
         <C.Line />
         <C.PageLink>

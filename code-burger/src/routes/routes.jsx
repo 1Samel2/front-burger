@@ -6,13 +6,13 @@ function conexãoEntrePages() {
   return (
     <Router>
       <Switch>
-        <Route>
+        
           <Route component={Login} path="/login" />
           <Route component={Register} path="/register" />
           <PrivateRoute exact component={Home} path="/" />
           <PrivateRoute component={Products} path="/products" />
           <PrivateRoute component={Cart} path="/cart" />
-        </Route>
+        
       </Switch>
     </Router>
   );
