@@ -27,7 +27,7 @@ export const ContainerRight = styled.div`
 export const PageLink = styled.a`
   cursor: pointer;
   text-decoration: none;
-  color: ${(props) => (props.isActive ? "black" : "#B06D46")};
+  color: ${(props) => (props.isActive ? "#B06D46" : "black")};
   font-size: 16px;
   line-height: 19px;
   font-weight: ${(props) => (props.isActive ? "bold" : "normal")};

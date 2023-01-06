@@ -1,11 +1,18 @@
 import * as C from "./styles";
+import { useUser } from "../../hooks/UserContext";
 import { useHistory } from "react-router-dom";
 export function Header() {
+  const {logout} = useUser()
   const {
     push,
     location: { pathname },
   } = useHistory();
-  
+
+  const logoutUser = () => {
+    logout()
+    push('/login')
+  }
+
   return (
     <C.Container>
       <C.ContainerLeft>
@@ -31,7 +38,7 @@ export function Header() {
 
         <C.ContainerText>
           <p>Olá, Rodolfo</p>
-          <C.PageLinkExit>Sair</C.PageLinkExit>
+          <C.PageLinkExit onClick={logoutUser}>Sair</C.PageLinkExit>
         </C.ContainerText>
       </C.ContainerRight>
     </C.Container>
