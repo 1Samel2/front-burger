@@ -6,11 +6,13 @@ import Routes from "./routes/routes";
 import AppProvider from "./hooks";
 import GlobalStyles from "./globalStyles";
 import "swiper/css/bundle";
+import {Header} from './components'
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AppProvider>
+      <Header/>
       <Routes />
     </AppProvider>
     <ToastContainer autoClose={2000} />
