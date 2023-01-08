@@ -5,11 +5,16 @@ import { CardProduct } from "../../components";
 import formatCurrency from "../../utils/formatCurrency";
 import Capa from "../../assets/capa-burger-home.svg";
 
-export const Products = () => {
+export function Products({ location: { state } }) {
+  let categoryId = 0
+  if(state?.categoryId){
+    categoryId = state.categoryId
+  }
+  
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(categoryId);
 
   useEffect(() => {
     async function loadCategories() {
@@ -69,4 +74,4 @@ export const Products = () => {
       </C.ProductsContainer>
     </C.Container>
   );
-};
+}

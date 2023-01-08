@@ -1,5 +1,6 @@
 import * as C from "./styles";
-import { CategoryCarousel } from "../../components";
+import { CategoryCarousel, OffersCarousel } from "../../components";
+
 import Capa from "../../assets/capa-burger-home.svg";
 
 export function Home() {
@@ -7,6 +8,7 @@ export function Home() {
     <C.Container>
       <C.HomeLogo src={Capa} alt="logo da categoria" />
       <CategoryCarousel />
+      <OffersCarousel/>
     </C.Container>
   );
 }

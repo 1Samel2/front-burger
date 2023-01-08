@@ -59,6 +59,21 @@ export const BoxOfCategory = styled.div`
     margin-top: 20px;
     gap: 10px;
   }
+
+  button {
+    margin-top: 20px;
+    width: 300px;
+    height: 66px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #10121dff;
+    cursor: pointer;
+  }
 `;
 
 export const Button = styled(Link)`

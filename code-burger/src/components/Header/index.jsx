@@ -2,7 +2,7 @@ import * as C from "./styles";
 import { useUser } from "../../hooks/UserContext";
 import { useHistory } from "react-router-dom";
 export function Header() {
-  const {logout} = useUser()
+  const {logout, userData} = useUser()
   const {
     push,
     location: { pathname },
@@ -37,7 +37,7 @@ export function Header() {
         </C.PageLink>
 
         <C.ContainerText>
-          <p>Olá, Rodolfo</p>
+          <p>Olá, {userData.name}</p>
           <C.PageLinkExit onClick={logoutUser}>Sair</C.PageLinkExit>
         </C.ContainerText>
       </C.ContainerRight>
