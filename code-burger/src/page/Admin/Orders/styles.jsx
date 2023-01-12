@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Select from 'react-select'
 
 export const Container = styled.div`
   background: #ffffff;
@@ -8,3 +9,8 @@ export const Container = styled.div`
 export const ProductImage = styled.img`
   border-radius: 5px;
 `;
+
+export const ReactSelect = styled(Select)`
+  
+  
+`

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as C from './styles'
+import * as React from "react";
+import * as C from "./styles";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -11,10 +11,22 @@ import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import status from "./order-status";
 
 export default function Row({ row }) {
   const [open, setOpen] = React.useState(false);
-
+  const [isLoading, setIsLoading] = React.useState(false);
+console.log(row)
+  async function setNewStatus(id, status) {
+    setIsLoading(true);
+    try {
+      await api.put(`orders/${id}`, { status });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -33,9 +45,18 @@ export default function Row({ row }) {
         <TableCell>{row.name}</TableCell>
         <TableCell>{row.date}</TableCell>
         <TableCell>
-          <select>
-            
-          </select>
+          <C.ReactSelect
+            options={status}
+            menuPortalTarget={document.body}
+            placeholder="Status"
+            defaultValue={
+              status.find((option) => option.value === row.status) || null
+            }
+            onChange={(newStatus) => {
+              setNewStatus(row.orderId, newStatus.value);
+            }}
+            isLoading={isLoading}
+          />
         </TableCell>
         <TableCell></TableCell>
       </TableRow>
@@ -64,7 +85,10 @@ export default function Row({ row }) {
                       <TableCell>{productRow.name}</TableCell>
                       <TableCell>{productRow.category}</TableCell>
                       <TableCell>
-                        <C.ProductImage  src={productRow.url} alt="imagem do produto" />
+                        <C.ProductImage
+                          src={productRow.url}
+                          alt="imagem do produto"
+                        />
                       </TableCell>
                     </TableRow>
                   ))}
