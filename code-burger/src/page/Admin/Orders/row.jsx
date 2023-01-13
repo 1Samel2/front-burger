@@ -12,11 +12,12 @@ import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import status from "./order-status";
+import api from '../../../services/api'
 
 export default function Row({ row }) {
   const [open, setOpen] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-console.log(row)
+
   async function setNewStatus(id, status) {
     setIsLoading(true);
     try {

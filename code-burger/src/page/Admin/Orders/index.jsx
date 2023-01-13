@@ -9,16 +9,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Row from "./row";
 import api from "../../../services/api";
+import status from "./order-status";
 import formatDate from "../../../utils/formatDate";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [activeStatus, setActiveStatus] = useState(1);
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
     async function loadOrders() {
       const { data } = await api.get("orders");
       setOrders(data);
+      setFilteredOrders(data);
     }
     loadOrders();
   }, []);
@@ -34,12 +38,35 @@ export default function Orders() {
   }
 
   useEffect(() => {
-    const newRows = orders.map((ord) => createData(ord));
+    const newRows = filteredOrders.map((ord) => createData(ord));
     setRows(newRows);
-  }, [orders]);
+  }, [filteredOrders]);
+
+  function handleStatus(status) {
+    if (status.id === 1) {
+      setFilteredOrders(orders);
+    } else {
+      const newOrders = orders.filter((order) => order.status === status.value);
+      setFilteredOrders(newOrders);
+    }
+    setActiveStatus(status.id);
+  }
 
   return (
     <C.Container>
+      <C.Menu>
+        {status &&
+          status.map((status) => (
+            <C.LinkMenu
+              onClick={() => handleStatus(status)}
+              key={status.id}
+              isActiveStatus={activeStatus === status.id}
+            >
+              {status.label}
+            </C.LinkMenu>
+          ))}
+      </C.Menu>
+
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
           <TableHead>
