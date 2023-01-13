@@ -12,9 +12,9 @@ import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import status from "./order-status";
-import api from '../../../services/api'
+import api from "../../../services/api";
 
-export default function Row({ row }) {
+export default function Row({ row, setOrders, orders }) {
   const [open, setOpen] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -22,6 +22,10 @@ export default function Row({ row }) {
     setIsLoading(true);
     try {
       await api.put(`orders/${id}`, { status });
+      const newOrders = orders.map((order) => {
+        return order._id === id ? { ...order, status } : order;
+      });
+      setOrders(newOrders);
     } catch (err) {
       console.log(err);
     } finally {
@@ -47,7 +51,7 @@ export default function Row({ row }) {
         <TableCell>{row.date}</TableCell>
         <TableCell>
           <C.ReactSelect
-            options={status}
+            options={status.filter((sts) => sts.value !== "Todos")}
             menuPortalTarget={document.body}
             placeholder="Status"
             defaultValue={
