@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { FaTrash } from "react-icons/fa";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const Container = styled.section`
   background-color: #ffffff;
@@ -75,4 +75,4 @@ export const ButtonImageTrash = styled.button`
   }
 `;
 
-export const Trash = styled(FaTrash)``;
+export const Trash = styled(DeleteIcon)``;

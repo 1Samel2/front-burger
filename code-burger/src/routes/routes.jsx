@@ -12,6 +12,7 @@ function conexãoEntrePages() {
           <PrivateRoute component={Products} path="/products" />
           <PrivateRoute component={Cart} path="/cart" />   
           <PrivateRoute component={Admin} path="/pedidos" isAdmin /> 
+          <PrivateRoute component={Admin} path="/listar-produtos" isAdmin /> 
       </Switch>
     </Router>
   );

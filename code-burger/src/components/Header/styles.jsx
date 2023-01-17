@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
 
-import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 
 export const Container = styled.header`
   height: 72px;
@@ -58,6 +59,6 @@ export const Line = styled.div`
   border: 0.5px solid #bababa;
 `;
 
-export const User = styled(FaUserAlt)``;
+export const User = styled(PersonIcon)``;
 
-export const Cart = styled(FaShoppingCart)``;
+export const Cart = styled(ShoppingCartIcon)``;

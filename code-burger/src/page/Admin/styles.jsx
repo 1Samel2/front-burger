@@ -1,6 +1,12 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+
+
 
 export const Container = styled.div`
-      color: white;
-`
+  display: flex;
+  min-height: 100vh;
+  max-width: 100vw;
+  background: #e5e5e5;
+  justify-content: flex-start;
+`;
 

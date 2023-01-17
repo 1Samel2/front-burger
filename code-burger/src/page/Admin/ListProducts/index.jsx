@@ -1,0 +1,56 @@
+import { useEffect, useState } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import apiCodeBurger from "../../../services/api";
+import * as C from "./styles";
+
+export default function ListProducts() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function loadOrders() {
+      const { data } = await apiCodeBurger.get("products");
+      setProducts(data);
+    }
+    loadOrders();
+  }, []);
+
+  return (
+    <C.Container>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Nome</TableCell>
+              <TableCell>Preço</TableCell>
+              <TableCell>Produto em oferta</TableCell>
+              <TableCell>Image</TableCell>
+              <TableCell>Editar produto</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {products.map((row) => (
+              <TableRow
+                key={row.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell>{row.price}</TableCell>
+                <TableCell>{row.offer}</TableCell>
+                <TableCell><img src={row.url} alt="image-produto" /></TableCell>
+                <TableCell><button>Editar</button></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </C.Container>
+  );
+}
