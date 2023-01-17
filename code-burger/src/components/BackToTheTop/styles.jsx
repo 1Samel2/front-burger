@@ -10,6 +10,6 @@ export const Container = styled.div`
 `;
 
 export const Rocket = styled(ExpandLessIcon)`
-  font-size: 50px;
+  font-size: 40px;
   cursor: pointer;
 `;

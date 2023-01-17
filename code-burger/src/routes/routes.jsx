@@ -1,18 +1,19 @@
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { Login, Register, Home, Products, Cart, Admin } from "../page";
+import paths from "../constants/paths";
 import PrivateRoute from "./private-route";
 
 function conexãoEntrePages() {
   return (
     <Router>
       <Switch>
-          <Route component={Login} path="/login" />
-          <Route component={Register} path="/register" />
-          <PrivateRoute exact component={Home} path="/" />
-          <PrivateRoute component={Products} path="/products" />
-          <PrivateRoute component={Cart} path="/cart" />   
-          <PrivateRoute component={Admin} path="/pedidos" isAdmin /> 
-          <PrivateRoute component={Admin} path="/listar-produtos" isAdmin /> 
+          <Route component={Login} path={paths.Login} />
+          <Route component={Register} path={paths.Register} />
+          <PrivateRoute exact component={Home} path={paths.Home} />
+          <PrivateRoute component={Products} path={paths.Products} />
+          <PrivateRoute component={Cart} path={paths.Cart} />   
+          <PrivateRoute component={Admin} path={paths.Order} isAdmin /> 
+          <PrivateRoute component={Admin} path={paths.ProductsEdit} isAdmin /> 
       </Switch>
     </Router>
   );
