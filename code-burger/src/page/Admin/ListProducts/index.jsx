@@ -7,7 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import apiCodeBurger from "../../../services/api";
+import formatCurrency from "../../../utils/formatCurrency";
 import * as C from "./styles";
+
 
 export default function ListProducts() {
   const [products, setProducts] = useState([]);
@@ -20,6 +22,13 @@ export default function ListProducts() {
     loadOrders();
   }, []);
 
+  function isOffer(offerStatus) {
+    if (offerStatus) {
+      return <C.Check />;
+    }
+    return <C.Cancel />;
+  }
+
   return (
     <C.Container>
       <TableContainer component={Paper}>
@@ -28,7 +37,7 @@ export default function ListProducts() {
             <TableRow>
               <TableCell>Nome</TableCell>
               <TableCell>Preço</TableCell>
-              <TableCell>Produto em oferta</TableCell>
+              <TableCell align="center">Produto em oferta</TableCell>
               <TableCell>Image</TableCell>
               <TableCell>Editar produto</TableCell>
             </TableRow>
@@ -42,10 +51,14 @@ export default function ListProducts() {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell>{row.price}</TableCell>
-                <TableCell>{row.offer}</TableCell>
-                <TableCell><img src={row.url} alt="image-produto" /></TableCell>
-                <TableCell><button>Editar</button></TableCell>
+                <TableCell>{formatCurrency(row.price)}</TableCell>
+                <TableCell align="center">{isOffer(row.offer)}</TableCell>
+                <TableCell>
+                  <C.Img src={row.url} alt="image-produto" />
+                </TableCell>
+                <TableCell>
+                  <C.Edit />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Routes from "./routes/routes";
 import AppProvider from "./hooks";
 import GlobalStyles from "./globalStyles";
+import BackToTheTop from "./components/BackToTheTop";
 import "swiper/css/bundle";
 
 
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AppProvider>
       <Routes />
+      <BackToTheTop/>
     </AppProvider>
     <ToastContainer autoClose={2000} />
     <GlobalStyles />

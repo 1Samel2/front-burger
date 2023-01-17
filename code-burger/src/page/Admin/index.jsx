@@ -6,8 +6,10 @@ export function Admin() {
   return (
     <C.Container>
       <SidMenuAdmin />
-     {/*  <Orders /> */}
-     <ListProducts /> 
+      <C.ContainerItems>
+        {/*  <Orders /> */}
+        <ListProducts />
+      </C.ContainerItems>
     </C.Container>
   );
 }

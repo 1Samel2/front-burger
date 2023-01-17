@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import RocketIcon from '@mui/icons-material/Rocket';
 
 export const Container = styled.div`
   background: #3c3c3c;

@@ -13,7 +13,7 @@ export function SidMenuAdmin() {
         </C.ItemContainer>
       ))}
       <hr></hr>
-      <C.ItemContainer style={{ position: "absolute", bottom: "30px" }}>
+      <C.ItemContainer>
         <C.Logout />
         <C.ListLink to="/login" onClick={logout}>
           Sair
