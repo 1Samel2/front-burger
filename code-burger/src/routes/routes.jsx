@@ -14,6 +14,7 @@ function conexãoEntrePages() {
           <PrivateRoute component={Cart} path={paths.Cart} />   
           <PrivateRoute component={Admin} path={paths.Order} isAdmin /> 
           <PrivateRoute component={Admin} path={paths.ProductsEdit} isAdmin /> 
+          <PrivateRoute component={Admin} path={paths.NewProduct} isAdmin /> 
       </Switch>
     </Router>
   );

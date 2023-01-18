@@ -1,13 +1,13 @@
 import * as C from "./styles";
 import listLink from "./menu-list";
 import { useUser } from "../../hooks/UserContext";
-export function SidMenuAdmin() {
+export function SidMenuAdmin({ path }) {
   const { logout } = useUser();
   return (
     <C.Container>
       <hr></hr>
       {listLink.map((item) => (
-        <C.ItemContainer key={item.id} isActive={true}>
+        <C.ItemContainer key={item.id} isActive={path === item.link}>
           <item.icon className="icon" />
           <C.ListLink to={item.link}>{item.label} </C.ListLink>
         </C.ItemContainer>

@@ -3,14 +3,15 @@ import Orders from "./Orders";
 import ListProducts from "./ListProducts";
 import { SidMenuAdmin } from "../../components";
 import paths from "../../constants/paths";
+import NewProduct from "./NewProduct";
 export function Admin({ match: { path } }) {
   return (
     <C.Container>
-      <SidMenuAdmin />
+      <SidMenuAdmin path={path} />
       <C.ContainerItems>
         {path === paths.Order && <Orders />}
         {path === paths.ProductsEdit && <ListProducts />}
-        {/*{path === paths.Order && <Orders/>}*/}
+        {path === paths.NewProduct && <NewProduct/>}
       </C.ContainerItems>
     </C.Container>
   );

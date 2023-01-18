@@ -1,5 +1,6 @@
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import paths from '../../constants/paths';
 
 const listLink = [
@@ -14,6 +15,12 @@ const listLink = [
         label: 'Listar Produto',
         link: paths.ProductsEdit,
         icon: ShoppingCartIcon,
+    },
+    {
+        id: 3,
+        label: 'Novo Produto',
+        link: paths.NewProduct,
+        icon: AddShoppingCartIcon,
     }
 ]
 

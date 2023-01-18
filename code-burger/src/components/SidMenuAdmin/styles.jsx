@@ -35,6 +35,7 @@ export const ListLink = styled(Link)`
   line-height: 19px;
   color: #ffffff;
   padding-left: 10px;
+  text-decoration: none;
 `;
 
 export const Logout = styled(LogoutIcon)`

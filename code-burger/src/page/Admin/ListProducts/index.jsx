@@ -10,9 +10,8 @@ import apiCodeBurger from "../../../services/api";
 import formatCurrency from "../../../utils/formatCurrency";
 import * as C from "./styles";
 
-
 export default function ListProducts() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
 
   useEffect(() => {
     async function loadOrders() {
@@ -43,24 +42,25 @@ export default function ListProducts() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell>{formatCurrency(row.price)}</TableCell>
-                <TableCell align="center">{isOffer(row.offer)}</TableCell>
-                <TableCell>
-                  <C.Img src={row.url} alt="image-produto" />
-                </TableCell>
-                <TableCell>
-                  <C.Edit />
-                </TableCell>
-              </TableRow>
-            ))}
+            {products &&
+              products.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell>{formatCurrency(row.price)}</TableCell>
+                  <TableCell align="center">{isOffer(row.offer)}</TableCell>
+                  <TableCell>
+                    <C.Img src={row.url} alt="image-produto" />
+                  </TableCell>
+                  <TableCell>
+                    <C.Edit />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
