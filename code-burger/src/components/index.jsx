@@ -6,3 +6,4 @@ export * from "./CategoryAndOffersCarousel";
 export * from "./Header";
 export * from "./OffersCarousel";
 export * from "./SidMenuAdmin";
+export * from "./ErrorMessage";

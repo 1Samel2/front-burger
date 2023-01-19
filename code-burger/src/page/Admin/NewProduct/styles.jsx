@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../../components/Button";
+import { Button, ErrorMessage } from "../../../components/";
 
 export const Container = styled.div`
   width: 100%;
@@ -41,16 +41,15 @@ export const LabelUpload = styled.label`
   align-items: center;
   color: white;
   font-size: 18px;
-  border: dashed ;
+  border: dashed;
   padding: 20px;
- margin-bottom: 40px;
+  margin-bottom: 40px;
   cursor: pointer;
 
   input {
     opacity: 0;
     width: 1px;
   }
- 
 `;
 
 export const ButtonAdd = styled(Button)`
@@ -58,4 +57,9 @@ export const ButtonAdd = styled(Button)`
   height: 60px;
   font-size: 20px;
   margin-top: 40px;
+`;
+
+export const Error = styled(ErrorMessage)`
+
+
 `;

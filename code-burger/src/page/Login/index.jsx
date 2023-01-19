@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import LoginImg from "../../assets/logo-burger.svg";
-import { Button } from "../../components";
+import { Button, ErrorMessage } from "../../components";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { useUser } from "../../hooks/UserContext";
@@ -65,14 +65,14 @@ export function Login() {
               {...register("email")}
               error={errors.email?.message}
             />
-            <C.Error>{errors.email?.message}</C.Error>
+            <ErrorMessage>{errors.email?.message}</ErrorMessage>
             <C.Label>Senha</C.Label>
             <C.input
               type="password"
               {...register("password")}
               error={errors.password?.message}
             />
-            <C.Error>{errors.password?.message}</C.Error>
+            <ErrorMessage>{errors.password?.message}</ErrorMessage>
             <Button type="submit" style={{ marginTop: 30, marginBottom: 30 }}>
               Sign In
             </Button>
