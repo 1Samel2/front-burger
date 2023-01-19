@@ -44,13 +44,11 @@ export const LabelUpload = styled.label`
   border: dashed ;
   padding: 20px;
  margin-bottom: 40px;
-
+  cursor: pointer;
 
   input {
     opacity: 0;
     width: 1px;
-    cursor: pointer;
-    margin-right: 40px;
   }
  
 `;
