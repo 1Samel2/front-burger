@@ -8,10 +8,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import apiCodeBurger from "../../../services/api";
 import formatCurrency from "../../../utils/formatCurrency";
+import paths from "../../../constants/paths";
+import { useHistory } from "react-router-dom";
 import * as C from "./styles";
 
 export default function ListProducts() {
   const [products, setProducts] = useState();
+  const { push } = useHistory();
 
   useEffect(() => {
     async function loadOrders() {
@@ -28,6 +31,10 @@ export default function ListProducts() {
     return <C.Cancel />;
   }
 
+  function editProduct(product) {
+    push(paths.EditProduct, { product })
+}
+
   return (
     <C.Container>
       <TableContainer component={Paper}>
@@ -43,21 +50,21 @@ export default function ListProducts() {
           </TableHead>
           <TableBody>
             {products &&
-              products.map((row) => (
+              products.map((product) => (
                 <TableRow
-                  key={row.id}
+                  key={product.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    {product.name}
                   </TableCell>
-                  <TableCell>{formatCurrency(row.price)}</TableCell>
-                  <TableCell align="center">{isOffer(row.offer)}</TableCell>
+                  <TableCell>{formatCurrency(product.price)}</TableCell>
+                  <TableCell align="center">{isOffer(product.offer)}</TableCell>
                   <TableCell>
-                    <C.Img src={row.url} alt="image-produto" />
+                    <C.Img src={product.url} alt="image-produto" />
                   </TableCell>
                   <TableCell>
-                    <C.Edit />
+                    <C.Edit onClick={() => editProduct(product)}/>
                   </TableCell>
                 </TableRow>
               ))}
