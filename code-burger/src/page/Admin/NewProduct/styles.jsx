@@ -13,8 +13,14 @@ export const Container = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    gap: 25px;
   }
 `;
+
+export const LabelInputAlign = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export const Label = styled.label`
   color: white;
@@ -29,7 +35,6 @@ export const Input = styled.input`
   border-radius: 8px;
   height: 60px;
   width: 322px;
-  margin-bottom: 40px;
   font-weight: bold;
   padding-left: 10px;
   border: none;
@@ -43,7 +48,7 @@ export const LabelUpload = styled.label`
   font-size: 18px;
   border: dashed;
   padding: 20px;
-  margin-bottom: 40px;
+
   cursor: pointer;
 
   input {
@@ -56,10 +61,5 @@ export const ButtonAdd = styled(Button)`
   width: 100%;
   height: 60px;
   font-size: 20px;
-  margin-top: 40px;
 `;
 
-export const Error = styled(ErrorMessage)`
-
-
-`;
